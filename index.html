@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>li2012China的个人主页</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        nav {
+            background-color: #1f1f1f;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #03dac6;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        h1 {
+            color: #bb86fc;
+        }
+        h2 {
+            color: #03dac6;
+        }
+        p {
+            line-height: 1.6;
+        }
+        a {
+            color: #03dac6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .project, .skill, .blog {
+            background-color: #1f1f1f;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .button {
+            background-color: #03dac6;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #018786;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #1f1f1f;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #03dac6;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="openModal()">
+    <nav>
+        <a href="#about">关于我</a>
+        <a href="#skills">技能</a>
+        <a href="#projects">项目</a>
+        <a href="#blog">博客</a>
+        <a href="#contact">联系我</a>
+    </nav>
+    <div class="container">
+        <section id="about">
+            <h1>欢迎来到li2012China的个人主页</h1>
+            <p>你好，我是li2012China。我是一名软件工程师，热衷于探索新技术和编程。</p>
+            <button class="button" onclick="openModal()">了解更多</button>
+        </section>
+        <section id="skills">
+            <h2>技能展示</h2>
+            <div class="skill">
+                <h3>前端开发</h3>
+                <p>熟练掌握HTML、CSS和JavaScript，以及React和Vue.js框架。</p>
+            </div>
+            <div class="skill">
+                <h3>后端开发</h3>
+                <p>熟练掌握Node.js和Express框架，以及数据库如MongoDB和MySQL。</p>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>项目展示</h2>
+            <div class="project">
+                <h3>项目1</h3>
+                <p>这是一个关于前端开发的项目，使用了HTML、CSS和JavaScript。</p>
+                <a href="#" class="button">查看项目</a>
+            </div>
+            <div class="project">
+                <h3>项目2</h3>
+                <p>这是一个关于后端开发的项目，使用了Node.js和Express框架。</p>
+                <a href="#" class="button">查看项目</a>
+            </div>
+        </section>
+        <section id="blog">
+            <h2>博客链接</h2>
+            <div class="blog">
+                <h3>我的技术博客</h3>
+                <p>欢迎访问我的技术博客，了解更多关于编程和技术的内容。</p>
+                <a href="https://blog.li2012China.com" target="_blank" class="button">访问博客</a>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>联系我</h2>
+            <p>你可以通过以下方式联系我：</p>
+            <ul>
+                <li><a href="mailto:li2012China@example.com" class="button">电子邮件</a></li>
+                <li><a href="https://github.com/li2012China" target="_blank" class="button">GitHub</a></li>
+                <li><a href="https://twitter.com/li2012China" target="_blank" class="button">Twitter</a></li>
+            </ul>
+        </section>
+        <p>感谢你的访问，希望我们能有机会合作！</p>
+    </div>
+
+    <!-- 弹窗 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>关于我</h2>
+            <p>我是一名软件工程师，热衷于探索新技术和编程。如果你有任何问题或合作意向，请随时联系我。</p>
+        </div>
+    </div>
+
+    <script>
+        // 获取弹窗
+        var modal = document.getElementById("myModal");
+
+        // 打开弹窗的函数
+        function openModal() {
+            modal.style.display = "block";
+        }
+
+        // 关闭弹窗的函数
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // 当用户点击弹窗外部区域时关闭弹窗
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
