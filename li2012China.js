@@ -22,10 +22,7 @@ class OpenUrlExtension {
             ]
         };
     }
-    docs() {
-		window.open('https://li2012china.github.io/li2012China.js', '_blank');
-	}
-
+    
     open(args) {
         const url = args.URL;
         window.open(url, '_blank');
