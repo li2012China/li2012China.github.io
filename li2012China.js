@@ -44,3 +44,5 @@ class OpenUrlExtension {
 }
 
 Scratch.extensions.register(new OpenUrlExtension());
+//By li2012China with github. Just for scratch.
+//未经允许，禁止转载！
