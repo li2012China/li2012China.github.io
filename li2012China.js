@@ -5,9 +5,20 @@ class OpenUrlExtension {
 
     getInfo() {
         return {
-            id: "openUrl",
-            name: "打开标签页",
+            id: "openUrlv1",
+            name: "打开标签页 V1",
             blocks: [
+                {
+                    opcode: "openHelp",
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: "打开说明",
+                    arguments: {
+                        URL: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: "https://li2012china.github.io/li2012China.js"
+                        }
+                    }
+                },
                 {
                     opcode: "open",
                     blockType: Scratch.BlockType.COMMAND,
@@ -22,7 +33,7 @@ class OpenUrlExtension {
             ]
         };
     }
-    
+
     open(args) {
         const url = args.URL;
         window.open(url, '_blank');
@@ -32,17 +43,10 @@ class OpenUrlExtension {
         console.log(args.MESSAGE);
     }
 
-    getOpenAppCommand(app) {
-        const commands = {
-            Win: `cmd://run ${app}`,
-            Mac: `open ${app}`,
-            Linux: `xdg-open ${app}`
-        };
-        const platform = navigator.platform.toLowerCase();
-        return commands[platform] || null;
+    openHelp(args) {
+        const url = args.URL;
+        window.open(url, '_blank');
     }
 }
 
 Scratch.extensions.register(new OpenUrlExtension());
-//By li2012China with github. Just for scratch.
-//未经允许，禁止转载！
