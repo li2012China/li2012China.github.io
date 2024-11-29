@@ -59,7 +59,7 @@ A: 这个扩展应该在所有现代浏览器上工作，包括Chrome、Firefox�
 
 我们非常重视用户的反馈。如果您在使用`OpenUrlExtension`时遇到任何问题，或者有任何建议和反馈，请通过以下方式联系我们：
 
-- 电子邮件：[support@yourdomain.com](mailto:support@yourdomain.com)
-- 官方网站：[https://yourdomain.com/support](https://yourdomain.com/support)
+- 电子邮件：[li2012China@outlook.com](mailto:li2012China@outlook.com)
+- 官方网站：[https://li2012China.github.io](https://li2012China.github.io/Scratch-e)
 
 我们期待您的宝贵意见，以帮助我们改进和优化这个扩展。
