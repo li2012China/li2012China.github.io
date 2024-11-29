@@ -51,7 +51,7 @@
 <body>
     <div class="container">
         <h1>li2012China的Scratch扩展库</h1>
-        <p>这是一个为Scratch用户提供的扩展库，它增加了更多功能，如深色模式、插件和编译器，让你的Scratch项目更加丰富和有趣。</p>
+        <p>这是一个为Scratch ( TurboWarp ) 用户提供的扩展库，让你的Scratch项目更加丰富和有趣。</p>
         
         <h2>功能特点</h2>
         <ul class="features">
@@ -63,17 +63,39 @@
         
         <h2>下载</h2>
         <div class="download-links">
-            <a href="#">Windows下载</a>
-            <a href="#">macOS下载</a>
-            <a href="#">Linux下载</a>
+            <a href="hty.md">文档</a>
+            <a href="file">查看</a>
         </div>
         
         <h2>示例代码</h2>
         <div class="code-sample">
             <pre>
-// 这是一个简单的Scratch扩展示例
-when green flag clicked
-say "Hello, World!"
+// 扩展的元数据
+{
+  "name": "Color Changer", // 扩展的名称
+  "namespace": "color_changer", // 扩展的命名空间，用于避免积木名称冲突
+  "extensionId": "color_changer", // 扩展的唯一标识符
+  "version": "1.0", // 扩展的版本号
+  "description": "Allows the user to change the color of the sprite.", // 扩展的描述
+  "iconUrl": "", // 扩展的图标URL，可以是本地文件或网络图片
+  "blocks": [
+    {
+      "opcode": "changeColor", // 积木的操作码
+      "text": "change [COLOR] color", // 积木的文本描述
+      "blockType": "command", // 积木类型，这里是命令积木
+      "arguments": {
+        "COLOR": {
+          "type": "field_colormenu", // 参数类型，这里是颜色选择器
+          "default": "#ff0000", // 默认颜色，这里是红色
+          "menu": "colorMenu" // 颜色选择器的菜单名称
+        }
+      }
+    }
+  ],
+  "menus": {
+    "colorMenu": ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"] // 颜色菜单的选项
+  }
+}
             </pre>
         </div>
     </div>
