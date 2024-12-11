@@ -106,6 +106,29 @@
             margin: 0 auto; /* 使iframe在footer中居中显示 */
             border: none; /* 移除iframe的边框 */
         }
+        /* 添加Google风格的按钮样式 */
+        .google-button {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #1a73e8;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .google-button:hover {
+            background-color: #1662c4;
+        }
+        .google-button:focus {
+            outline: none;
+        }
+        .google-button:active {
+            box-shadow: inset 0 0 10px #0d47a1;
+        }
     </style>
 </head>
 <body>
@@ -149,6 +172,8 @@
     </section>
 
     <footer>
+        <!-- 添加Google风格的按钮 -->
+        <a href="/Mminecraft" class="google-button">访问Minecraft</a>
         <iframe src="https://e.widgetbot.io/channels/1316377371917422702/1316377373243080846" allow="clipboard-write; fullscreen" height="800" width="1500"></iframe>
         <p>版权所有 &copy; 2024 li2012China</p>
     </footer>
