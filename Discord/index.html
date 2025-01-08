@@ -1,0 +1,777 @@
+<html><head><base href=".">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discord Clone</title>
+<style>
+:root {
+  --dark-primary: #232428;  
+  --dark-secondary: #2b2d31;
+  --dark-tertiary: #1e1f22;
+  --text-primary: #f2f3f5;
+  --text-muted: #949ba4;
+  --brand-color: #5865f2;
+  --interactive-hover: #4752c4;
+  --channelbar-bg: rgba(79,84,92,0.3);
+  --profile-bg: #313338;
+  --input-bg: #1e1f22; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: var(--dark-primary);
+  color: var(--text-primary);
+  height: 100vh;
+  display: flex;
+}
+
+.servers-list {
+  width: 72px;
+  background: var(--dark-tertiary);
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.server-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(45deg, var(--dark-secondary), var(--brand-color));
+  background-size: 200% 200%;
+  animation: gradientBG 6s ease infinite;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--brand-color);
+  position: relative;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+.server-icon:hover {
+  border-radius: 16px;
+  background: var(--brand-color);
+  color: white;
+}
+
+.server-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.server-icon.download svg {
+  width: 20px;
+  height: 20px;
+}
+
+.servers-divider {
+  height: 2px;
+  width: 32px;
+  background: var(--dark-secondary);
+  margin: 4px 0;
+}
+
+.channels-list {
+  width: 240px;
+  background: var(--dark-secondary);
+  padding: 12px;
+}
+
+.channel-category {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+.channel:hover {
+  background: rgba(79,84,92,0.32);
+  color: var(--text-primary);
+  padding-left: 12px;
+}
+
+.channel svg {
+  margin-right: 6px;
+}
+
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(79,84,92,0.48);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.message {
+  display: flex;
+  padding: 4px 0;
+}
+
+.message.has-avatar {
+  margin-top: 17px;
+}
+
+.message:not(.has-avatar) {
+  margin-left: 56px;  /* avatar width + margin */
+}
+
+.message-avatar, .member-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b6b, #5865f2);
+  border: 2px solid var(--dark-tertiary);
+  transition: all 0.3s ease;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.message-avatar:hover, .member-avatar:hover {
+  transform: scale(1.1);
+}
+
+.message-avatar {
+  cursor: pointer;
+}
+
+.message-content {
+  margin-left: 16px;
+  flex: 1;
+}
+
+.message-content h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.message-text {
+  color: var(--text-primary);
+  line-height: 1.375;
+}
+
+.message-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.message-timestamp {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 16px 24px;
+  background: #383a40;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid rgba(79,84,92,0.3);
+  transition: border-color 0.2s ease;
+}
+
+.chat-input input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.send-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.send-button:hover {
+  color: var(--text-primary);
+  background: rgba(79,84,92,0.32);
+}
+
+.send-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.chat-input:focus-within {
+  border-color: var(--brand-color);
+}
+
+.members-list {
+  width: 240px;
+  background: var(--dark-secondary);
+  padding: 12px;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.member:hover {
+  background: var(--channelbar-bg);
+  transform: translateX(4px);
+  transition: all 0.2s ease;
+}
+
+.member-name {
+  font-size: 14px;
+}
+
+.profile-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--profile-bg);
+  padding: 24px;
+  border-radius: 12px;
+  z-index: 1000;
+  width: 440px;
+}
+
+.profile-header {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profile-section {
+  margin-bottom: 24px;
+}
+
+.profile-field {
+  margin-bottom: 16px;
+}
+
+.profile-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.profile-field input {
+  width: 100%;
+  padding: 10px;
+  background: var(--input-bg);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+
+.profile-field input:focus {
+  outline: 2px solid var(--brand-color);
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.profile-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.profile-actions button.cancel {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.profile-actions button.save {
+  background: var(--brand-color);
+  color: white;
+}
+
+.profile-actions button:hover {
+  filter: brightness(1.1);
+}
+
+.profile-avatar {
+  width: 96px; 
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  cursor: pointer;
+  background-size: cover !important;
+  background-position: center !important;
+  border: 4px solid var(--dark-tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-avatar input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.chat-actions {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: var(--brand-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  background: var(--interactive-hover);
+  transform: translateY(-1px);
+}
+
+.join-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #43b581;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.join-message svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+</style>
+</head>
+<body>
+  <div class="servers-list">
+    <div class="server-icon" id="direct-messages">D</div>
+    <div class="servers-divider"></div>
+    <div class="server-icon explore" id="explore">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 10.9C11.39 10.9 10.9 11.39 10.9 12C10.9 12.61 11.39 13.1 12 13.1C12.61 13.1 13.1 12.61 13.1 12C13.1 11.39 12.61 10.9 12 10.9ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM14.19 14.19L6 18L9.81 9.81L18 6L14.19 14.19Z"/>
+      </svg>
+    </div>
+    <div class="server-icon download" id="download-app">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16.293 9.293L17.707 10.707L12 16.414L6.29297 10.707L7.70697 9.293L11 12.586V2H13V12.586L16.293 9.293ZM18 20V18H20V20C20 21.102 19.104 22 18 22H6C4.896 22 4 21.102 4 20V18H6V20H18Z"/>
+      </svg>
+    </div>
+    <div class="servers-divider"></div>
+    <div class="server-icon" id="add-server">+</div>
+  </div>
+
+  <div class="channels-list">
+    <div class="channel-category">&#x6587;&#x5b57;&#x9891;&#x9053;</div>
+    <div class="channel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5.88657 21C5.57547 21 5.3399 20.7189 5.39427 20.4126L6.00001 17H2.59511C2.28449 17 2.04905 16.7198 2.10259 16.4138L2.27759 15.4138C2.31946 15.1746 2.52722 15 2.77011 15H6.35001L7.41001 9H4.00511C3.69449 9 3.45905 8.71977 3.51259 8.41381L3.68759 7.41381C3.72946 7.17456 3.93722 7 4.18011 7H7.76001L8.39677 3.41262C8.43914 3.17391 8.64664 3 8.88907 3H9.87344C10.1845 3 10.4201 3.28107 10.3657 3.58738L9.76001 7H15.76L16.3968 3.41262C16.4391 3.17391 16.6466 3 16.8891 3H17.8734C18.1845 3 18.4201 3.28107 18.3657 3.58738L17.76 7H21.1649C21.4755 7 21.711 7.28023 21.6574 7.58619L21.4824 8.58619C21.4406 8.82544 21.2328 9 20.9899 9H17.41L16.35 15H19.7549C20.0655 15 20.301 15.2802 20.2474 15.5862L20.0724 16.5862C20.0306 16.8254 19.8228 17 19.5799 17H16L15.3632 20.5874C15.3209 20.8261 15.1134 21 14.8709 21H13.8866C13.5755 21 13.3399 20.7189 13.3943 20.4126L14 17H8.00001L7.36325 20.5874C7.32088 20.8261 7.11337 21 6.87094 21H5.88657ZM9.41045 9L8.35045 15H14.3504L15.4104 9H9.41045Z"/>
+    </svg>
+    &#x5e38;&#x89c4;
+  </div>
+</div>
+
+  <div class="chat-area">
+    <div class="chat-header">
+      # &#x5e38;&#x89c4;
+    </div>
+    <div class="chat-messages">
+      <div class="message has-avatar">
+        <div class="message-avatar"></div>
+        <div class="message-content">
+          <div class="message-header">
+            <h3>&#x7528;&#x6237;&#x540d;</h3>
+            <div class="message-timestamp">Just now</div>
+          </div>
+          <div class="message-text">&#x6b22;&#x8fce;&#x6765;&#x5230;Discord!</div>
+        </div>
+      </div>
+      <div class="message has-avatar">
+        <div class="message-avatar"></div>
+        <div class="message-content">
+          <div class="message-header">
+            <h3>&#x673a;&#x5668;&#x4eba;</h3>
+            <div class="message-timestamp">Just now</div>
+          </div>
+          <div class="message-text">&#x8fd9;&#x662f;&#x4e00;&#x4e2a;&#x6a21;&#x677f;&#x7684;Discord&#x9875;&#x9762;</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="&#x53d1;&#x9001;&#x6d88;&#x606f;&#x5230; # &#x5e38;&#x89c4;">
+      <div class="send-button">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chat-actions">
+      <button class="action-button" id="add-member">&#x6dfb;&#x52a0;&#x7528;&#x6237;</button>
+      <button class="action-button" id="clear-chat">&#x6e05;&#x7a7a;&#x8bb0;&#x5f55;</button>
+    </div>
+  </div>
+
+  <div class="members-list">
+    <div class="member">
+      <div class="member-avatar"></div>
+      <div class="member-name">&#x7528;&#x6237;&#x540d;</div>
+    </div>
+    <div class="member">
+      <div class="member-avatar"></div>
+      <div class="member-name">&#x673a;&#x5668;&#x4eba;</div>
+    </div>
+  </div>
+
+<script>function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+let lastSender = null;
+let lastMessageTime = 0;
+let activeUser = '你';
+let avatarUrls = {
+  '你': 'https://li2012china.github.io/Discord/picture/Steve.png',
+  '用户名': 'https://li2012china.github.io/Discord/picture/Allay.png',
+  '机器人': 'https://li2012china.github.io/Discord/picture/sus.png'
+};
+document.querySelector('.chat-input input').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    sendMessage(this.value);
+    this.value = '';
+  }
+});
+document.querySelector('.send-button').addEventListener('click', function () {
+  const input = document.querySelector('.chat-input input');
+  sendMessage(input.value);
+  input.value = '';
+});
+function sendMessage(text) {
+  if (!text.trim()) return;
+  messageSound.play();
+  const currentTime = Date.now();
+  const messagesDiv = document.querySelector('.chat-messages');
+  const newMessage = document.createElement('div');
+  const shouldGroupMessage = lastSender === activeUser && currentTime - lastMessageTime < 300000;
+  newMessage.className = shouldGroupMessage ? 'message' : 'message has-avatar';
+  const timestamp = new Date().toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  }).toLowerCase();
+  newMessage.innerHTML = shouldGroupMessage ? `
+    <div class="message-content">
+      <div class="message-text">${text}</div>
+    </div>` : `
+    <div class="message-avatar" style="background-image: url('${avatarUrls[activeUser]}'); background-size: cover; border-radius: 50%; width: 40px; height: 40px;"></div>
+    <div class="message-content">
+      <div class="message-header">
+        <h3>${activeUser}</h3>
+        <span class="message-timestamp">${timestamp}</span>
+      </div>
+      <div class="message-text">${text}</div>
+    </div>`;
+  newMessage.style.display = 'flex';
+  messagesDiv.appendChild(newMessage);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  lastSender = activeUser;
+  lastMessageTime = currentTime;
+}
+document.querySelectorAll('.server-icon').forEach(icon => {
+  icon.addEventListener('mouseover', function () {
+    this.style.transform = 'translateY(-2px)';
+  });
+  icon.addEventListener('mouseout', function () {
+    this.style.transform = 'translateY(0)';
+  });
+});
+document.querySelectorAll('.channel').forEach(channel => {
+  channel.addEventListener('click', function () {
+    document.querySelectorAll('.channel').forEach(c => {
+      c.style.backgroundColor = 'transparent';
+      c.style.color = 'var(--text-muted)';
+    });
+    this.style.backgroundColor = 'rgba(79,84,92,0.32)';
+    this.style.color = 'var(--text-primary)';
+    document.querySelector('.chat-header').textContent = '# ' + this.textContent.trim();
+  });
+});
+document.getElementById('direct-messages').addEventListener('click', function () {
+  alert('切换到私信界面');
+});
+document.getElementById('explore').addEventListener('click', function () {
+  window.open('https://discord.com/servers', '_blank');
+});
+document.getElementById('download-app').addEventListener('click', function () {
+  window.open('https://discord.com/download', '_blank');
+});
+document.getElementById('add-server').addEventListener('click', function () {
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--dark-primary);
+    padding: 24px;
+    border-radius: 12px;
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border: 1px solid var(--brand-color);
+  `;
+  modal.innerHTML = `
+    <h2 style="margin-bottom: 20px; text-align: center; color: var(--text-primary); font-size: 24px;">添加服务器</h2>
+    <div style="display: flex; gap: 12px; justify-content: center;">
+      <button style="padding: 10px 20px; background: linear-gradient(45deg, var(--brand-color), var(--interactive-hover)); border: none; color: white; border-radius: 6px; cursor: pointer; font-weight: 600; transition: transform 0.2s ease;">创建服务器</button>
+      <button style="padding: 10px 20px; background: linear-gradient(45deg, var(--brand-color), var(--interactive-hover)); border: none; color: white; border-radius: 6px; cursor: pointer; font-weight: 600; transition: transform 0.2s ease;">加入服务器</button>
+    </div>
+  `;
+  const backdrop = document.createElement('div');
+  backdrop.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+  `;
+  backdrop.addEventListener('click', function () {
+    document.body.removeChild(modal);
+    document.body.removeChild(backdrop);
+  });
+  document.body.appendChild(backdrop);
+  document.body.appendChild(modal);
+});
+document.querySelectorAll('button').forEach(button => {
+  button.addEventListener('mouseover', function () {
+    this.style.transform = 'scale(1.05)';
+  });
+  button.addEventListener('mouseout', function () {
+    this.style.transform = 'scale(1)';
+  });
+});
+document.querySelectorAll('.member-avatar').forEach(avatar => {
+  avatar.addEventListener('click', function () {
+    const memberName = this.parentElement.querySelector('.member-name').textContent;
+    showProfileModal(memberName);
+  });
+});
+document.querySelectorAll('.message-avatar').forEach(avatar => {
+  avatar.addEventListener('click', function () {
+    const messageElement = this.closest('.message');
+    if (messageElement) {
+      const username = messageElement.querySelector('h3')?.textContent;
+      if (username) {
+        showProfileModal(username);
+      }
+    }
+  });
+});
+document.getElementById('add-member').addEventListener('click', () => {
+  const membersList = document.querySelector('.members-list');
+  const newMemberName = prompt('输入新用户名称:');
+  if (newMemberName) {
+    const randomAvatarUrl = `https://li2012china.github.io/Discord/picture/Steve.png`;
+    avatarUrls[newMemberName] = randomAvatarUrl;
+    const newMember = document.createElement('div');
+    newMember.className = 'member';
+    newMember.innerHTML = `
+      <div class="member-avatar" style="background-image: url('${randomAvatarUrl}')"></div>
+      <div class="member-name">${newMemberName}</div>
+    `;
+    membersList.appendChild(newMember);
+    newMember.querySelector('.member-avatar').addEventListener('click', function () {
+      showProfileModal(newMemberName);
+    });
+
+    // Add join message to chat
+    const messagesDiv = document.querySelector('.chat-messages');
+    const joinMessage = document.createElement('div');
+    joinMessage.className = 'join-message';
+    joinMessage.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+      </svg>
+      ${newMemberName} 进入了服务器。
+    `;
+    messagesDiv.appendChild(joinMessage);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    messageSound.play();
+  }
+});
+function showProfileModal(username) {
+  const backdrop = document.createElement('div');
+  backdrop.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 999;
+  `;
+  const modal = document.createElement('div');
+  modal.className = 'profile-modal';
+  modal.innerHTML = `
+    <div class="profile-header">编辑用户资料</div>
+    <div class="profile-avatar">
+      <input type="file" class="avatar-upload" accept="image/*" style="display:none">
+    </div>
+    <div class="profile-section">
+      <div class="profile-field">
+        <label>显示名称</label>
+        <input type="text" value="${username}" placeholder="输入显示名称">
+      </div>
+      <div class="profile-field">
+        <label>关于我</label>
+        <input type="text" placeholder="说说你是谁">
+      </div>
+      <div class="profile-field">
+        <label>头像URL</label>
+        <input type="text" value="${avatarUrls[username]}" placeholder="输入头像URL">
+      </div>
+    </div>
+    <div class="profile-actions">
+      <button class="cancel">取消</button>
+      <button class="save">保存更改</button>
+      <button class="switch-user">切换到此用户</button>
+    </div>
+  `;
+  document.body.appendChild(backdrop);
+  document.body.appendChild(modal);
+  modal.querySelector('.profile-avatar').style.backgroundImage = `url('${avatarUrls[username] || 'https://li2012china.github.io/Discord/picture/Steve.png'}')`;
+  modal.querySelector('.profile-avatar').addEventListener('click', () => {
+    modal.querySelector('.avatar-upload').click();
+  });
+  modal.querySelector('.avatar-upload').addEventListener('change', async e => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      try {
+        const dataUrl = await readFileAsDataUrl(file);
+        modal.querySelector('.profile-avatar').style.backgroundImage = `url('${dataUrl}')`;
+        modal.querySelector('input[placeholder="输入头像URL"]').value = dataUrl;
+      } catch (err) {
+        console.error('Error reading file:', err);
+      }
+    }
+  });
+  modal.querySelector('.switch-user').addEventListener('click', () => {
+    activeUser = username;
+    document.body.removeChild(modal);
+    document.body.removeChild(backdrop);
+  });
+  modal.querySelector('.save').addEventListener('click', () => {
+    const newName = modal.querySelector('input[placeholder="输入显示名称"]').value.trim();
+    const newAvatar = modal.querySelector('input[placeholder="输入头像URL"]').value.trim();
+    if (newName) {
+      const memberElement = Array.from(document.querySelectorAll('.member')).find(el => el.querySelector('.member-name').textContent === username);
+      if (memberElement) {
+        memberElement.querySelector('.member-name').textContent = newName;
+      }
+      if (newAvatar) {
+        avatarUrls[newName] = newAvatar;
+      }
+    }
+    document.body.removeChild(modal);
+    document.body.removeChild(backdrop);
+  });
+  backdrop.addEventListener('click', () => {
+    document.body.removeChild(modal);
+    document.body.removeChild(backdrop);
+  });
+  modal.querySelector('.cancel').addEventListener('click', () => {
+    document.body.removeChild(modal);
+    document.body.removeChild(backdrop);
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.member-avatar').forEach(avatar => {
+    const memberName = avatar.parentElement.querySelector('.member-name').textContent;
+    if (avatarUrls[memberName]) {
+      avatar.style.backgroundImage = `url('${avatarUrls[memberName]}')`;
+    }
+  });
+  document.getElementById('clear-chat').addEventListener('click', () => {
+    document.querySelector('.chat-messages').innerHTML = '';
+    lastSender = null;
+    lastMessageTime = 0;
+  });
+  document.getElementById('add-member').addEventListener('click', () => {});
+});
+const messageSound = new Audio('https://li2012china.github.io/Discord/sound/ding.mp3');</script>
+</body></html>
