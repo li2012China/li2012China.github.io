@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>li2012China - Minecraft创作者</title>
+    <style>
+        /* 页面加载动画 */
+        @keyframes loadAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            animation: loadAnimation 1s ease-in-out forwards;
+        }
+
+        header {
+            background-color: #282c34;
+            color: #ffffff;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* 语言切换选择框 */
+        .language-selector {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #4caf50;
+            margin-bottom: 1rem;
+        }
+
+        .profile h2 {
+            font-size: 1.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .profile p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .projects {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .projects h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-item p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 0 0.5rem;
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #4caf50;
+        }
+
+        footer {
+            background-color: #282c34;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 id="header-title">li2012China</h1>
+        </div>
+        <!-- 语言切换选择框 -->
+        <select class="language-selector" id="language-selector">
+            <option value="zh-CN">中文</option>
+            <option value="en-US">English</option>
+        </select>
+    </header>
+
+    <div class="container">
+        <div class="profile">
+            <img src="https://pic1.afdiancdn.com/user/69b97f8e734c11efa3025254001e7c00/avatar/9af8c7df203904afb9f51cd244cc126e_w1111_h1111_s103.png?imageView2/1/w/120/h/120" alt="Profile Picture">
+            <h2 id="profile-title">Minecraft 地图与整合包创作者</h2>
+            <p id="profile-description">我是一名专注于《我的世界》地图和整合包创作的爱好者。通过我的作品，我希望能为玩家带来全新的游戏体验，并与大家共同探索无限的可能。</p>
+        </div>
+
+        <div class="projects">
+            <h2 id="projects-title">我的作品</h2>
+            <div class="project-item">
+                <h3 id="project1-title">Minecraft 地图</h3>
+                <p id="project1-description">我正在创作一系列独特的《我的世界》地图，旨在为玩家带来全新的冒险体验。每张地图都经过精心设计，包含丰富的剧情和挑战。</p>
+            </div>
+            <div class="project-item">
+                <h3 id="project2-title">Minecraft 整合包</h3>
+                <p id="project2-description">除了地图，我还制作了一些功能强大的整合包，帮助玩家快速搭建属于自己的游戏世界。整合包包含多种模组和优化设置，适合不同类型的玩家。</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://afdian.com/a/li2012China" target="_blank" title="爱发电">
+                <img src="https://pic1.afdiancdn.com/static/img/logo/logo.png?imageView2/1/w/24/h/24" alt="爱发电" style="width: 24px; height: 24px;">
+            </a>
+            <a href="https://github.com/li2012China" target="_blank" title="GitHub">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; height: 24px;">
+            </a>
+            <a href="https://www.qq.com" target="_blank" title="QQ">
+                <img src="https            a href="https://www.qq.com" target="_blank" title="QQ">
+                <img src="https://pic1.afdiancdn.com/static/img/qq@2x.png?imageView2/1/w/24/h/24" alt="QQ" style="width: 24px; height: 24px;">
+            </a>
+            <a href="https://www.douban.com" target="_blank" title="豆瓣">
+                <img src="https://pic1.afdiancdn.com/static/img/douban@2x.png?imageView2/1/w/24/h/24" alt="豆瓣" style="width: 24px; height: 24px;">
+            </a>
+            <a href="https://www.weixin.com" target="_blank" title="微信">
+                <img src="https://pic1.afdiancdn.com/static/img/wechat@2x.png?imageView2/1/w/24/h/24" alt="微信" style="width: 24px; height: 24px;">
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p id="footer-text">&copy; 2025 li2012China. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 语言内容
+        const translations = {
+            "zh-CN": {
+                "header-title": "li2012China",
+                "profile-title": "Minecraft 地图与整合包创作者",
+                "profile-description": "我是一名专注于《我的世界》地图和整合包创作的爱好者。通过我的作品，我希望能为玩家带来全新的游戏体验，并与大家共同探索无限的可能。",
+                "projects-title": "我的作品",
+                "project1-title": "Minecraft 地图",
+                "project1-description": "我正在创作一系列独特的《我的世界》地图，旨在为玩家带来全新的冒险体验。每张地图都经过精心设计，包含丰富的剧情和挑战。",
+                "project2-title": "Minecraft 整合包",
+                "project2-description": "除了地图，我还制作了一些功能强大的整合包，帮助玩家快速搭建属于自己的游戏世界。整合包包含多种模组和优化设置，适合不同类型的玩家。",
+                "footer-text": "版权所有 © 2025 li2012China。保留所有权利。"
+            },
+            "en-US": {
+                "header-title": "li2012China",
+                "profile-title": "Minecraft Map & Modpack Creator",
+                "profile-description": "I am a creator specializing in Minecraft maps and modpacks. Through my creations, I hope to bring new experiences to players and explore endless possibilities together.",
+                "projects-title": "My Projects",
+                "project1-title": "Minecraft Maps",
+                "project1-description": "I am creating a series of unique Minecraft maps designed to offer players new adventure experiences. Each map is carefully crafted with rich storylines and challenges.",
+                "project2-title": "Minecraft Modpacks",
+                "project2-description": "In addition to maps, I have also developed powerful modpacks to help players quickly set up their own game worlds. These modpacks include a variety of mods and optimized settings suitable for different types of players.",
+                "footer-text": "Copyright © 2025 li2012China. All rights reserved."
+            }
+        };
+
+        // 获取语言选择器
+        const languageSelector = document.getElementById("language-selector");
+
+        // 设置语言
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll("[id]");
+            elements.forEach(element => {
+                if (translations[lang][element.id]) {
+                    element.textContent = translations[lang][element.id];
+                }
+            });
+        }
+
+        // 初始化语言
+        setLanguage("zh-CN");
+
+        // 监听语言切换
+        languageSelector.addEventListener("change", function () {
+            const selectedLang = this.value;
+            setLanguage(selectedLang);
+        });
+    </script>
+</body>
+</html>
