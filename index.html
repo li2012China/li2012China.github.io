@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,81 +11,61 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(45deg, #003049, #d62828);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .container {
             background-color: white;
-            padding: 50px 70px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 95%;
             max-width: 800px;
-            width: 90%;
             text-align: center;
             animation: fade-in 1s ease-in-out;
-            transform: scale(0.9);
-            opacity: 0;
-            animation-fill-mode: forwards;
         }
 
         @keyframes fade-in {
-            0% {
-                transform: scale(0.9);
+            from {
+                transform: translateY(30px);
                 opacity: 0;
             }
-            100% {
-                transform: scale(1);
+            to {
+                transform: translateY(0);
                 opacity: 1;
             }
         }
 
         /* 标题样式 */
         .title {
-            font-size: 48px;
+            font-size: 28px;
             color: #2c3e50;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             animation: slide-up 1s ease-in-out 0.5s forwards;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
 
         @keyframes slide-up {
-            0% {
+            from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
-            100% {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* 语言选择器 */
-        .language-selector {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .language-selector:hover {
-            background-color: #444;
-        }
-
         /* 头像样式 */
         .avatar {
-            height: 150px;
-            margin-bottom: 30px;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 25px;
             border-radius: 50%;
             transition: transform 0.3s ease;
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
@@ -98,161 +78,123 @@
 
         /* 个人信息 */
         .profile-info {
-            font-size: 20px;
+            font-size: 16px;
             color: #333;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            line-height: 1.5;
         }
 
         /* 项目部分 */
         .projects {
-            margin-top: 40px;
-            padding: 20px;
-            border-radius: 15px;
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 10px;
             background-color: #f8f9fa;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .project-item {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 15px;
+            padding: 12px;
             background-color: #ffffff;
-            border-radius: 10px;
+            border-radius: 8px;
         }
 
         .project-title {
-            font-size: 24px;
+            font-size: 20px;
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .project-description {
-            font-size: 16px;
+            font-size: 14px;
             color: #666;
+            line-height: 1.4;
         }
 
         /* 深入其他内容按钮 */
         .more-button {
             display: inline-block;
-            padding: 15px 30px;
-            font-size: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
             background-color: #3498db;
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 25px;
             transition: background-color 0.3s ease;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
         }
 
         .more-button:hover {
             background-color: #2980b9;
         }
 
-        /* 社交链接 */
-        .social-links {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-        }
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .container {
+                padding: 50px 70px;
+            }
 
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            margin: 0 8px;
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            line-height: 40px;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
+            .title {
+                font-size: 48px;
+                margin-bottom: 30px;
+            }
 
-        .social-links a:hover {
-            background-color: #2980b9;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+            .avatar {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 30px;
+            }
+
+            .profile-info {
+                font-size: 20px;
+                margin-bottom: 40px;
+            }
+
+            .projects {
+                margin-top: 40px;
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .project-description {
+                font-size: 16px;
+            }
+
+            .more-button {
+                padding: 15px 30px;
+                font-size: 20px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 语言选择器 -->
-        <select class="language-selector" id="language-selector">
-            <option value="zh-CN">中文</option>
-            <option value="en-US">English</option>
-        </select>
-
-        <img src="https://pic1.afdiancdn.com/user/69b97f8e734c11efa3025254001e7c00/avatar/9af8c7df203904afb9f51cd244cc126e_w1111_h1111_s103.png" alt="Logo" class="avatar">
-        <h1 class="title" id="header-title">li2012China - Minecraft创作者</h1>
-        <p class="profile-info" id="profile-description">我是一名专注于《我的世界》地图和整合包创作的爱好者。通过我的作品，我希望能为玩家带来全新的游戏体验，并与大家共同探索无限的可能！</p>
+        <img src="https://pic1.afdiancdn.com/user/69b97f8e734c11efa3025254001e7c00/avatar/9af8c7df203904afb9f51cd244cc126e_w1111_h1111_s103.png" alt="Profile Avatar" class="avatar">
+        <h1 class="title">li2012China - Minecraft创作者</h1>
+        <p class="profile-info">我是一名专注于《我的世界》地图和整合包创作的爱好者。通过我的作品，我希望能为玩家带来全新的游戏体验，并与大家共同探索无限的可能！</p>
 
         <div class="projects">
             <div class="project-item">
-                <h2 class="project-title" id="project1-title">Minecraft 地图</h2>
-                <p class="project-description" id="project1-description">我正在创作一系列独特的《我的世界》地图，旨在为玩家带来全新的冒险体验。每张地图都经过精心设计，包含丰富的剧情和挑战。</p>
+                <h2 class="project-title">Minecraft 地图</h2>
+                <p class="project-description">我正在创作一系列独特的《我的世界》地图，旨在为玩家带来全新的冒险体验。每张地图都经过精心设计，包含丰富的剧情和挑战。</p>
             </div>
             <div class="project-item">
-                <h2 class="project-title" id="project2-title">Minecraft 整合包</h2>
-                <p class="project-description" id="project2-description">除了地图，我还制作了一些功能强大的整合包，帮助玩家快速搭建属于自己的游戏世界。整合包包含多种模组和优化设置，适合不同类型的玩家。</p>
+                <h2 class="project-title">Minecraft 整合包</h2>
+                <p class="project-description">除了地图，我还制作了一些功能强大的整合包，帮助玩家快速搭建属于自己的游戏世界。整合包包含多种模组和优化设置，适合不同类型的玩家。</p>
             </div>
         </div>
 
         <!-- 深入其他内容按钮 -->
-        <a href="/go.html" class="more-button" id="more-button">深入其他内容 ↓</a>
-
-        <div class="social-links">
-            <a href="https://afdian.com/a/li2012China" target="_blank"><img src="https://pic1.afdiancdn.com/static/img/logo/logo.png" alt="爱发电" style="width: 32px; height: 32px;"></a>
-            <a href="https://github.com/li2012China" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 32px; height: 32px;"></a>
-            <a href="https://www.weixin.com" target="_blank"><img src="https://pic1.afdiancdn.com/static/img/wechat@2x.png" alt="微信" style="width: 32px; height: 32px;"></a>
-        </div>
+        <a href="/go.html" class="more-button">深入其他内容 ↓</a>
     </div>
-
-    <script>
-        // 语言内容
-        const translations = {
-            "zh-CN": {
-                "header-title": "li2012China - Minecraft创作者",
-                "profile-description": "我是一名专注于《我的世界》地图和整合包创作的爱好者。通过我的作品，我希望能为玩家带来全新的游戏体验，并与大家共同探索无限的可能！",
-                "project1-title": "Minecraft 地图",
-                "project1-description": "我正在创作一系列独特的《我的世界》地图，旨在为玩家带来全新的冒险体验。每张地图都经过精心设计，包含丰富的剧情和挑战。",
-                "project2-title": "Minecraft 整合包",
-                "project2-description": "除了地图，我还制作了一些功能强大的整合包，帮助玩家快速搭建属于自己的游戏世界。整合包包含多种模组和优化设置，适合不同类型的玩家。",
-                "more-button": "深入其他内容 ↓"
-            },
-            "en-US": {
-                "header-title": "li2012China - Minecraft Creator",
-                "profile-description": "I am a creator specializing in Minecraft maps and modpacks. Through my creations, I hope to bring new experiences to players and explore endless possibilities together.",
-                "project1-title": "Minecraft Maps",
-                "project1-description": "I am creating a series of unique Minecraft maps designed to offer players new adventure experiences. Each map is carefully crafted with rich storylines and challenges.",
-                "project2-title": "Minecraft Modpacks",
-                "project2-description": "In addition to maps, I have also developed powerful modpacks to help players quickly set up their own game worlds. These modpacks include a variety of mods and optimized settings suitable for different types of players.",
-                "more-button": "Explore More ↓"
-            }
-        };
-
-        // 获取语言选择器
-        const languageSelector = document.getElementById("language-selector");
-
-        // 设置语言
-        function setLanguage(lang) {
-            const elements = document.querySelectorAll("[id]");
-            elements.forEach(element => {
-                if (translations[lang][element.id]) {
-                    element.textContent = translations[lang][element.id];
-                }
-            });
-        }
-
-        // 初始化语言
-        setLanguage("zh-CN");
-
-        // 监听语言切换
-        languageSelector.addEventListener("change", function () {
-            const selectedLang = this.value;
-            setLanguage(selectedLang);
-        });
-    </script>
 </body>
 </html>
