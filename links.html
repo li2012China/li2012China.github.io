@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>li2012China - 导航页面</title>
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --hover-color: #2980b9;
+            --bg-color: #f8f9fa;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            width: 95%;
+            max-width: 1000px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 标题样式 */
+        .title {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 导航块 */
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .navigation-block {
+            background-color: var(--bg-color);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .navigation-block:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 20px var(--shadow-color);
+            }
+
+        .block-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .block-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .block-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .block-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px var(--shadow-color);
+        }
+
+            .block-button:hover {
+                background-color: var(--hover-color);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 10px var(--shadow-color);
+            }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 60px 40px;
+            }
+
+            .title {
+                font-size: 36px;
+                margin-bottom: 40px;
+            }
+
+            .navigation-grid {
+                gap: 30px;
+            }
+
+            .navigation-block {
+                padding: 40px 30px;
+            }
+
+            .block-icon {
+                font-size: 48px;
+                margin-bottom: 20px;
+            }
+
+            .block-title {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+            .block-description {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .block-button {
+                padding: 14px 28px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">探索更多内容</h1>
+
+        <div class="navigation-grid">
+            <div class="navigation-block">
+                <div class="block-icon">📦</div>
+                <h2 class="block-title">下载整合包</h2>
+                <p class="block-description">点击下方按钮，即可跳转至整合包下载页面！</p>
+                <a href="https://li2012china.github.io/cnwdownload.html" class="block-button" target="_blank">前往下载</a>
+            </div>
+
+            <div class="navigation-block">
+                <div class="block-icon">📺</div>
+                <h2 class="block-title">Bilibili</h2>
+                <p class="block-description">喜欢视频吗？那看看我在 bilibili 的主页吧！</p>
+                <a href="https://space.bilibili.com/3546739839601525" class="block-button" target="_blank">前往首页</a>
+            </div>
+
+            <div class="navigation-block">
+                <div class="block-icon">🎮</div>
+                <h2 class="block-title">我的世界服务器</h2>
+                <p class="block-description">加入我们的 Minecraft 服务器，开始你的冒险吧！</p>
+                <a href="afdian://open?user=li2012China" class="block-button">加入服务器</a>
+            </div>
+
+            <div class="navigation-block">
+                <div class="block-icon">❤️</div>
+                <h2 class="block-title">爱发电</h2>
+                <p class="block-description">支持我的创作，获取更多优质内容！</p>
+                <a href="https://afdian.com/a/li2012China" class="block-button" target="_blank">前往支持</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
