@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie隐私政策</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #4a4a4a;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cookie隐私政策</h1>
+        <p>最后更新日期：<span id="lastUpdatedDate"></span></p>
+        <script>
+            // 获取当前日期并格式化为中文日期
+            const currentDate = new Date();
+            const day = currentDate.getDate();
+            const month = currentDate.toLocaleString('zh-CN', { month: 'long' });
+            const year = currentDate.getFullYear();
+            const formattedDate = `${year}年${month}${day}日`;
+            document.getElementById('lastUpdatedDate').textContent = formattedDate;
+        </script>
+
+        <h2>1. 什么是Cookie？</h2>
+        <p>Cookie是小型文本文件，当您访问网站时，这些文件会被存储在您的设备（计算机、智能手机或平板电脑）上。它们被广泛用于使网站更高效地运行，并为网站所有者提供信息。</p>
+
+        <h2>2. 我们使用的Cookie类型</h2>
+        <ul>
+            <li>
+                <strong>必要性Cookie：</strong>这些Cookie是网站正常运行所必需的。它们使您能够浏览网站并使用其功能。没有这些Cookie，网站的某些部分可能无法正常工作。
+            </li>
+            <li>
+                <strong>分析性Cookie：</strong>这些Cookie帮助我们了解访客如何与我们的网站互动。它们提供了关于访客数量、访问页面以及在网站上停留时间的信息。这有助于我们改进用户体验。
+            </li>
+            <li>
+                <strong>功能性Cookie：</strong>这些Cookie允许网站记住您的选择（例如您的语言偏好或您所在的地区），并提供更个性化的内容。
+            </li>
+            <li>
+                <strong>广告性Cookie：</strong>这些Cookie用于投放与您更相关的广告。它们还可能用于限制您看到某则广告的次数，并帮助衡量广告活动的效果。
+            </li>
+        </ul>
+
+        <h2>3. 管理Cookie</h2>
+        <p>您可以通过浏览器设置来控制和管理Cookie。大多数浏览器允许您：</p>
+        <ul>
+            <li>阻止所有Cookie</li>
+            <li>允许所有Cookie</li>
+            <li>删除已设置的Cookie</li>
+            <li>阻止特定网站的Cookie</li>
+        </ul>
+        <p>请注意，阻止或删除Cookie可能会影响网站的功能和您的使用体验。</p>
+
+        <h2>4. 第三方Cookie</h2>
+        <p>我们的网站可能包含第三方网站、插件或内容的链接。这些第三方可能会设置自己的Cookie，这些Cookie受其自身隐私政策的约束。我们建议您查看他们的隐私政策，以了解他们如何收集和使用您的数据。</p>
+
+        <h2>5. 本Cookie政策的更改</h2>
+        <p>我们可能会不时更新本Cookie政策，以反映我们实践的变化或其他运营、法律或监管原因。请定期查看此页面以获取更新。</p>
+
+        <h2>6. 联系我们</h2>
+        <p>如果您对我们的Cookie政策或本政策有任何疑问或疑虑，请通过以下方式联系我们：</p>
+        <p>电子邮件：li2012China@outlook.com<br>
+        网站：li2012China.github.io/</p>
+    </div>
+</body>
+</html>

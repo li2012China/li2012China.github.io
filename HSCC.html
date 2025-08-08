@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啧啧啧</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #003049, #d62828);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .download-container {
+            background-color: white;
+            padding: 50px 70px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            animation: fade-in 1s ease-in-out;
+            transform: scale(0.9);
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* 标题样式 */
+        .title {
+            font-size: 48px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            animation: slide-up 1s ease-in-out 0.5s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 倒计时部分 */
+        #countdown {
+            font-size: 48px;
+            color: #e74c3c;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .countdown-text {
+            font-size: 24px;
+            color: #34495e;
+            margin: 20px 0;
+            animation: fadeIn 1s ease-in-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 提示信息 */
+        .tip-text {
+            font-size: 18px;
+            color: #666;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.9s forwards;
+        }
+
+        /* 按钮样式 */
+        .manual-link {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: transform 0.3s ease-in-out;
+            animation: bounceIn 1s ease-in-out 0.8s forwards;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        .manual-link:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* 图标样式 */
+        .avatar {
+            height: 120px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="download-container">
+        <img src="https://pic1.afdiancdn.com/user/69b97f8e734c11efa3025254001e7c00/avatar/9af8c7df203904afb9f51cd244cc126e_w1111_h1111_s103.png" alt="Logo" class="avatar">
+        <h1 class="title">下载页已迁移，啧啧啧啧啧啧啧。</h1>
+        
+        <p class="tip-text">你来晚了。去：http://li2012china.github.io/file/ins-HSCC.html 下载</p>
+    </div>
+
+    <script>
+        let countdownInterval;
+        let seconds = 5;
+
+        function startCountdown() {
+            countdownInterval = setInterval(() => {
+                seconds--;
+                document.getElementById('countdown').innerText = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'https://github.com/li2012China/HSCC/releases/download/1.0/TheHenryStickminChinese.zip';
+                }
+            }, 1000);
+        }
+
+        window.onload = () => {
+            startCountdown();
+        };
+    </script>
+</body>
+</html>

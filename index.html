@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>li2012China - Minecraft创作者</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #003049, #d62828);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 800px;
+            text-align: center;
+            animation: fade-in 1s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* 标题样式 */
+        .title {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            animation: slide-up 1s ease-in-out 0.5s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 头像样式 */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 25px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        /* 个人信息 */
+        .profile-info {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* 项目部分 */
+        .projects {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* 深入其他内容按钮 */
+        .more-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .more-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .container {
+                padding: 50px 70px;
+            }
+
+            .title {
+                font-size: 48px;
+                margin-bottom: 30px;
+            }
+
+            .avatar {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 30px;
+            }
+
+            .profile-info {
+                font-size: 20px;
+                margin-bottom: 40px;
+            }
+
+            .projects {
+                margin-top: 40px;
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .project-description {
+                font-size: 16px;
+            }
+
+            .more-button {
+                padding: 15px 30px;
+                font-size: 20px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/file/pf-HeadEmpty.png" alt="Profile Avatar" class="avatar">
+        <h1 class="title">li2012China - Minecraft创作者</h1>
+        <p class="profile-info">我是一名专注于《我的世界》地图和整合包创作的爱好者。通过我的作品，我希望能为玩家带来全新的游戏体验，并与大家共同探索无限的可能！</p>
+
+        <div class="projects">
+            <div class="project-item">
+                <h2 class="project-title">Minecraft 地图</h2>
+                <p class="project-description">我正在创作一系列独特的《我的世界》地图，旨在为玩家带来全新的冒险体验。每张地图都经过精心设计，包含丰富的剧情和挑战。</p>
+            </div>
+            <div class="project-item">
+                <h2 class="project-title">Minecraft 整合包</h2>
+                <p class="project-description">除了地图，我还制作了一些功能强大的整合包，帮助玩家快速搭建属于自己的游戏世界。整合包包含多种模组和优化设置，适合不同类型的玩家。</p>
+            </div>
+        </div>
+
+        <!-- 深入其他内容按钮 -->
+        <a href="/links.html" class="more-button">深入其他内容 ↓</a>
+    </div>
+</body>
+</html>
+
