@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Markdown转换结果">
+  <meta name="keywords" content="markdown, html, converter">
+  <meta name="author" content="Markdown转HTML工具">
+  <title>Markdown转换结果</title>
+  <style>
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      font-size: 16px;
+    }
+    
+      .preview-content {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: #24292f;
+        background: #ffffff;
+        max-width: none;
+      }
+      .preview-content h1, .preview-content h2, .preview-content h3, .preview-content h4, .preview-content h5, .preview-content h6 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+      .preview-content h1 { font-size: 2em; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; }
+      .preview-content h2 { font-size: 1.5em; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; }
+      .preview-content h3 { font-size: 1.25em; }
+      .preview-content code {
+        padding: 0.2em 0.4em;
+        margin: 0;
+        font-size: 85%;
+        background-color: rgba(175, 184, 193, 0.2);
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+      }
+      .preview-content pre {
+        padding: 16px;
+        overflow: auto;
+        font-size: 14px;
+        line-height: 1.45;
+        background-color: #f6f8fa;
+        border-radius: 8px;
+        border: 1px solid #d0d7de;
+        margin: 24px 0 !important;
+        display: block;
+      }
+      /* 确保连续的代码块之间有足够间距 */
+      .preview-content pre + pre {
+        margin-top: 32px !important;
+      }
+      .preview-content pre code {
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+        font-size: inherit;
+      }
+      .preview-content blockquote {
+        padding: 0 1em;
+        color: #656d76;
+        border-left: 0.25em solid #d0d7de;
+        margin: 0 0 16px 0;
+      }
+      .preview-content table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 16px 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .preview-content table th, .preview-content table td {
+        padding: 8px 12px;
+        border: 1px solid #d0d7de;
+        text-align: left;
+      }
+      .preview-content table th {
+        font-weight: 600;
+        background-color: #f6f8fa;
+      }
+      .preview-content table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      .preview-content ul, .preview-content ol {
+        padding-left: 2em;
+        margin: 16px 0;
+      }
+      .preview-content li {
+        margin: 0.25em 0;
+      }
+      
+      /* 语法高亮样式 */
+      .preview-content .token.comment,
+      .preview-content .token.prolog,
+      .preview-content .token.doctype,
+      .preview-content .token.cdata {
+        color: #6a737d;
+        font-style: italic;
+      }
+      .preview-content .token.punctuation {
+        color: #586069;
+      }
+      .preview-content .token.property,
+      .preview-content .token.tag,
+      .preview-content .token.boolean,
+      .preview-content .token.number,
+      .preview-content .token.constant,
+      .preview-content .token.symbol,
+      .preview-content .token.deleted {
+        color: #005cc5;
+      }
+      .preview-content .token.selector,
+      .preview-content .token.attr-name,
+      .preview-content .token.string,
+      .preview-content .token.char,
+      .preview-content .token.builtin,
+      .preview-content .token.inserted {
+        color: #032f62;
+      }
+      .preview-content .token.operator,
+      .preview-content .token.entity,
+      .preview-content .token.url,
+      .preview-content .language-css .token.string,
+      .preview-content .style .token.string {
+        color: #d73a49;
+      }
+      .preview-content .token.atrule,
+      .preview-content .token.attr-value,
+      .preview-content .token.keyword {
+        color: #d73a49;
+      }
+      .preview-content .token.function,
+      .preview-content .token.class-name {
+        color: #6f42c1;
+      }
+      .preview-content .token.regex,
+      .preview-content .token.important,
+      .preview-content .token.variable {
+        color: #e36209;
+      }
+      .preview-content .token.important,
+      .preview-content .token.bold {
+        font-weight: bold;
+      }
+      .preview-content .token.italic {
+        font-style: italic;
+      }
+    
+    @media (max-width: 768px) {
+      body { padding: 10px; font-size: 14px; }
+      .preview-content { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-content">
+    <h1><center>2024届初一5班同学微信群公约</center></h1>
+<p><strong>前言：我们的数字家园</strong></p>
+<p>亲爱的同学们：<br>欢迎你们，2024届初一5班的每一位成员！这个微信群，是我们跨越校园围墙，在数字世界共同构建的一个新家园。它不仅是发布通知、交流学业的信息平台，更是承载我们同窗情谊、记录青春成长、共享欢乐与挑战的温暖空间。我们来自不同的家庭，拥有不同的个性与梦想，但此刻，我们因“同班同学”这一神圣的纽带而紧密相连。</p>
+<p>为了将我们这个数字家园建设得更加文明、有序、温暖、有益，确保每一位成员都能在此获得归属感、尊重感和获得感，特制定本《微信群公约》。本公约并非意在用冰冷的条条框框束缚大家，而是旨在明确共同的价值观和行为底线，保护每一位成员的合法权益，预防可能出现的误解与摩擦，引导我们共同营造一个正能量充盈的网络集体环境。它的最终目的，是守护我们纯粹的同窗之谊，让技术为我们的友情与成长赋能，而非成为隔阂与矛盾的源头。</p>
+<p>公约的制定，参考了《中华人民共和国宪法》、《中华人民共和国民法典》、《中华人民共和国未成年人保护法》、《中华人民共和国网络安全法》、《中华人民共和国数据安全法》、《中华人民共和国个人信息保护法》等相关法律法规的精神与规定，并结合了中学生的身心发展特点及校园学习生活的实际需求。我们希望每一位同学在加入本群之时，都能仔细阅读、充分理解并郑重承诺遵守本公约。这既是对集体的负责，也是对自身公民素养与数字素养的一次重要学习与实践。</p>
+<p>让我们携手努力，使这个群成为我们初中岁月中最值得珍惜和回忆的“线上班级”的一部分。</p>
+<p><strong>第一章 总则</strong></p>
+<p><strong>第一条 群组性质与定位</strong><br>1.1 本群全称为“2024届初一5班同学群”，是由班级集体创建并管理的非官方、纯公益性质的内部交流平台。<br>1.2 本群的核心定位是：<br>    (a) <strong>信息枢纽</strong>：及时、准确地传递学校、年级、班级发布的各类非涉密通知、活动安排、学习任务等。<br>    (b) <strong>学业沙龙</strong>：成为课堂的延伸，用于探讨学业问题、分享学习资料与方法、交流学习心得、组织学习小组，营造勤学、互助、共进的学风。<br>    (c) <strong>情感港湾</strong>：促进同学间的健康社交与情感支持，分享校园生活的点滴趣事、相互鼓励、庆祝生日、表达关怀，增强班级凝聚力和归属感。<br>    (d) <strong>成长天地</strong>：围绕德智体美劳全面发展，分享有益身心的资讯、推荐好书好影、讨论社会现象（在合规前提下）、展示才艺特长，共同进步。</p>
+<p><strong>第二条 适用范围</strong><br>2.1 本公约适用于所有加入“2024届初一5班同学群”的成员。<br>2.2 本群成员限定为：2024届初一5班全体在读学生、班主任老师及经班主任特别批准加入的现任科任老师。<br>2.3 严禁成员擅自邀请非上述范围人员（包括但不限于家长、外班同学、社会人士等）入群。如有特殊需求，须提前向管理员团队提出书面申请，说明理由并获得批准。</p>
+<p><strong>第三条 基本原则</strong><br>3.1 <strong>守法合规原则</strong>：一切言行必须遵守中华人民共和国现行法律法规，维护国家安全和社会稳定，是不可逾越的红线。<br>3.2 <strong>尊重包容原则</strong>：成员间应相互尊重，平等相待，包容个性差异，尊重不同观点，倡导文明、理性、有礼的交流氛围。<br>3.3 <strong>诚实信用原则</strong>：发布信息应真实可靠，不造谣、不信谣、不传谣。承诺之事尽力完成，诚信交往。<br>3.4 <strong>有益健康原则</strong>：内容应积极向上，有利于身心健康和学业进步，抵制低俗、消极、沉迷等不良倾向。<br>3.5 <strong>隐私安全原则</strong>：高度重视并严格保护个人及他人的隐私信息安全，不非法收集、使用、加工、传输他人个人信息。<br>3.6 <strong>权责一致原则</strong>：成员应对自己在群内的言行独立承担责任。管理员依规管理，接受监督。</p>
+<p><strong>第四条 成员基本权利</strong><br>4.1 <strong>平等参与权</strong>：每位成员享有平等使用群功能、参与群讨论、发起符合公约主题的对话的权利。<br>4.2 <strong>获取信息权</strong>：有权及时获取群内发布的合法、合规的各类信息。<br>4.3 <strong>监督建议权</strong>：有权对群内违规言行进行监督，并通过私信方式向管理员举报；有权对群管理和发展提出建设性意见。<br>4.4 <strong>权益维护权</strong>：当自身合法权益在群内受到侵害时，有权寻求管理员帮助并要求依规处理。<br>4.5 <strong>退出自由权</strong>：成员有自愿退出群组的自由（建议退出前告知管理员或班主任原因，以便我们改进工作）。</p>
+<p><strong>第五条 成员基本义务</strong><br>5.1 <strong>遵守公约义务</strong>：自觉学习、遵守并维护本公约。<br>5.2 <strong>实名制义务</strong>：按照要求设置群昵称，保证身份真实可识别。<br>5.3 <strong>文明发言义务</strong>：使用文明用语，理性讨论，拒绝任何形式的网络暴力。<br>5.4 <strong>内容审查义务</strong>：对自己发布或转发的内容进行初步审查，确保其合规性、真实性和有益性。<br>5.5 <strong>配合管理义务</strong>：尊重并配合管理员依据本公约进行的管理工作。<br>5.6 <strong>安全防护义务</strong>：提高网络安全意识，防范诈骗、病毒等信息安全风险。</p>
+<p><strong>第二章 成员管理</strong></p>
+<p><strong>第六条 入群审核</strong><br>6.1 新成员入群需经管理员或班主任邀请。<br>6.2 管理员应在邀请前确认其身份符合本公约第2.2条规定。<br>6.3 新成员入群后，应首先阅读本公约，并按要求修改群昵称。</p>
+<p><strong>第七条 群昵称规范</strong><br>7.1 所有成员必须统一设置群昵称。<br>7.2 格式要求：[姓名]（例如：张三）。建议可增加学号后两位以便精确识别（例如：张三05）。<br>7.3 不得在昵称中使用侮辱性、不雅、误导性词语或特殊符号。<br>7.4 管理员应定期检查昵称合规情况，对不符合要求者进行提醒。</p>
+<p><strong>第八条 成员行为等级与记录</strong><br>8.1 为实施精细化管理和教育引导，管理员可对成员行为进行记录（注重教育而非惩罚）。<br>8.2 记录可包括：积极参与、热心助人、发布优质内容等良好行为，以及轻微违规、一般违规、严重违规等行为。<br>8.3 记录仅用于内部管理参考和必要时与班主任沟通，注重保护成员隐私。</p>
+<p><strong>第九条 成员退出机制</strong><br>9.1 <strong>主动退出</strong>：成员可自行退出群聊。<br>9.2 <strong>劝退</strong>：对于长期不活跃（如超过一学期未发言且未关注重要通知）且经联系确认无意愿保留群身份的成员，管理员可进行劝退。<br>9.3 <strong>移除</strong>：对于违反本公约且达到移除标准的成员，管理员将依据后续章节规定执行移除操作。</p>
+<p><strong>第三章 内容管理规范（核心章节）</strong></p>
+<p><strong>第十条 严禁发布的内容（法律与道德红线）</strong><br>以下内容绝对禁止，一经发现，管理员有权立即删除并对发布者采取严厉措施，包括但不限于警告、移除出群，并视情况上报学校或相关部门：<br>10.1 <strong>危害国家安全与统一类</strong>：<br>    (a) 反对宪法确定的基本原则的。<br>    (b) 危害国家统一、主权和领土完整的。<br>    (c) 泄露国家秘密、危害国家安全或者损害国家荣誉和利益的。<br>    (d) 煽动民族仇恨、民族歧视，破坏民族团结的。<br>    (e) 破坏国家宗教政策，宣扬邪教和封建迷信的。<br>    (f) 散布谣言，扰乱社会秩序，破坏社会稳定的。<br>    (g) 宣扬淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的。<br>    (h) 侮辱或者诽谤他人，侵害他人合法权益的。<br>    (i) 含有法律、行政法规禁止的其他内容的。<br>10.2 <strong>网络违法犯罪类</strong>：<br>    (a) 网络诈骗信息：如兼职刷单、贷款诈骗、投资理财诈骗、冒充老师/同学借钱等。<br>    (b) 侵犯知识产权内容：大量传播未获授权的影视、音乐、软件、教科书等资源的下载链接。<br>    (c) 非法交易信息：买卖违禁品、考试答案、个人账号等。<br>10.3 <strong>严重网络暴力与侵权类</strong>：<br>    (a) 对他人进行恶意人身攻击、辱骂、贬损、歧视的言论。<br>    (b) 恶意捏造事实，散布谣言，诽谤他人。<br>    (c) 未经本人许可，公开披露其隐私信息，如家庭住址、联系电话、身份证号、个人病历、财务情况、家庭成员信息等。<br>    (d) 未经允许，发布涉及他人肖像的、可能使其感到尴尬或受伤害的照片或视频。<br>    (e) 发起或参与针对特定个人的恶意“人肉搜索”。<br>10.4 <strong>严重干扰群秩序类</strong>：<br>    (a) 恶意刷屏（连续、大量发送无意义字符、表情、图片、视频等），严重影响他人浏览信息。<br>    (b) 发布或传播病毒、木马等恶意程序或链接。<br>    (c) 使用外挂、机器人等软件干扰群正常功能。</p>
+<p><strong>第十一条 不鼓励发布的内容（维护群环境质量）</strong><br>以下内容虽不一定违法，但不利于营造良好的群氛围，建议尽量避免或严格限制。管理员可进行提示、引导或删除：<br>11.1 <strong>商业广告与营销类</strong>：<br>    (a) 与学习、生活无关的商业广告、产品推广、微商信息。<br>    (b) 各种形式的拼单、砍价、投票拉票、集资、募捐链接（经学校或班级官方组织的除外）。<br>    (c) 网络游戏推广、游戏账号交易、游戏代练等。<br>11.2 <strong>低价值与娱乐化内容类</strong>：<br>    (a) 过量发布与主业无关的搞笑段子、八卦新闻、明星绯闻、短视频（每日建议不超过1-2条，且内容需健康）。<br>    (b) 发布内容空洞、无明确目的的“水群”言论（如单纯刷存在感）。<br>    (c) 进行简单的、无意义的字符或表情接力。<br>11.3 <strong>可能引发不适或争议的内容类</strong>：<br>    (a) 内容血腥、恐怖、恶心的图片或视频。<br>    (b) 传播未经证实的“都市传说”、“灵异事件”等。<br>    (c) 容易引发过度争论或对立情绪的敏感社会话题、历史评价等（除非是以学习为目的的理性探讨）。<br>11.4 <strong>私人事务过度公开类</strong>：<br>    (a) 将应在私人小范围或一对一沟通中解决的矛盾纠纷公开到群内。<br>    (b) 过度倾诉个人负面情绪，可能对群氛围造成持续性压抑（鼓励寻求朋友、家长、老师或专业人士的帮助）。</p>
+<p><strong>第十二条 鼓励发布的内容（共建优质生态）</strong><br>我们欢迎并鼓励以下内容，它们是我们这个群的核心价值所在：<br>12.1 <strong>学业相关</strong>：<br>    (a) 课堂疑难问题的提问与解答。<br>    (b) 学习经验、方法、技巧的分享。<br>    (c) 有价值的笔记、提纲、复习资料共享（注意版权意识）。<br>    (d) 老师允许下发布的学习任务、项目小组讨论。<br>    (e) 推荐优质的书目、纪录片、教育类公众号或网站。<br>12.2 <strong>班级事务与活动</strong>：<br>    (a) 学校、年级、班级官方发布的通知、公告（需与书面通知一致）。<br>    (b) 班级活动（如运动会、艺术节、社会实践）的筹备、通知、图文直播（注意隐私保护）、总结分享。<br>    (c) 卫生值日提醒、考试安排提醒等公共服务信息。<br>12.3 <strong>互助与关怀</strong>：<br>    (a) 同学间力所能及的帮助请求与响应（如寻找失物、询问作业）。<br>    (b) 对遇到困难同学的真诚鼓励和安慰。<br>    (c) 生日、比赛获奖、取得进步时的祝福与祝贺。<br>    (d) 分享安全知识、健康常识、生活小技巧。<br>12.4 <strong>有益身心的拓展内容</strong>：<br>    (a) 推荐优秀的文学、艺术、音乐作品。<br>    (b) 分享有深度的时事评论（需注明来源并保持理性）。<br>    (c) 展示积极向上的个人才艺或兴趣爱好（如绘画、编程、体育成果）。<br>    (d) 组织健康的线上集体活动（如线上读书会、知识竞赛，需经管理员同意）。</p>
+<p><strong>第十三条 信息真实性要求</strong><br>13.1 成员应对自己发布信息的真实性负责。未经核实的信息，尤其是可能引发恐慌或误导的消息，不得转发。<br>13.2 转发他人信息时，应注明来源，并尽可能判断其可靠性。<br>13.3 对于群内出现的存疑信息，其他成员有责任提醒核实，管理员应及时介入澄清。</p>
+<p><strong>第十四条 知识产权与版权声明</strong><br>14.1 尊重他人知识产权。发布他人作品（文章、图片、视频、音频等）应获得授权或注明作者及出处。<br>14.2 群内原创内容，版权归创作者所有。其他成员如需转载或使用，应征得原作者同意。<br>14.3 禁止大规模分享明显侵权的电子书籍、教材、软件等。</p>
+<p><strong>第四章 行为规范与礼仪</strong></p>
+<p><strong>第十五条 交流礼仪</strong><br>15.1 <strong>语言文明</strong>：使用礼貌用语，如“请”、“谢谢”、“对不起”。杜绝脏话、谩骂、讽刺、挖苦。<br>15.2 <strong>话题适度</strong>：讨论话题应围绕群定位展开，避免长时间讨论极少数人感兴趣的偏门话题，占用公共空间。<br>15.3 <strong>尊重隐私</strong>：不追问他人不愿透露的个人信息。聊天中涉及他人隐私时，应立刻停止并道歉。<br>15.4 <strong>理性讨论</strong>：出现观点分歧时，应就事论事，对事不对人。禁止人身攻击、贴标签、扣帽子。鼓励以“我认为…”、“我的理解是…”等方式表达。<br>15.5 <strong>避免刷屏</strong>：连续发言请适当合并内容，避免短时间发送大量碎片信息。<br>15.6 <strong>慎用“@”</strong>：“@所有人”仅管理员用于发布重要通知。个人“@”他人应确有需要，避免滥用。<br>15.7 <strong>回应反馈</strong>：对于他人的提问或帮助请求，如知晓应尽力回应；如无法帮助，也应礼貌回复。</p>
+<p><strong>第十六条 时间管理</strong><br>16.1 <strong>静音时段</strong>：为保障休息，建议群内设置 <strong>晚间23:00至次日早晨7:00为静音时段</strong>。在此期间，除非有极其紧急的事务，尽量避免发言。管理员应在此期间加强对无关闲聊的管理。<br>16.2 <strong>上课时间</strong>：在校上课期间，严禁使用手机并在群内聊天（除非老师要求）。<br>16.3 <strong>尊重差异</strong>：发言时需考虑到不同同学的作息时间差异。</p>
+<p><strong>第十七条 冲突处理机制</strong><br>17.1 群内如发生争执，其他成员应劝和、降温，引导双方私聊解决或寻求管理员调解。<br>17.2 严禁在群内公开争吵、相互指责、召集“站队”。<br>17.3 管理员应主动介入冲突，隔离双方，了解情况，依据公约进行调解和处理。必要时上报班主任。</p>
+<p><strong>第五章 管理员职责与工作规范</strong></p>
+<p><strong>第十八条 管理团队的构成与产生</strong><br>18.1 本群设管理员若干名，由班主任和班级主要学生干部（如班长、团支书等）担任，并可经班主任同意吸纳有责任心、乐于奉献、威信较高的同学加入。<br>18.2 管理员团队应保持男女比例均衡，并定期（如一学期）进行轮换或评估，接受群成员监督。</p>
+<p><strong>第十九条 管理员的基本职责</strong><br>19.1 <strong>维护秩序</strong>：监督群内言论，确保符合公约要求。<br>19.2 <strong>处理违规</strong>：对违规内容及时处理（删除、警告），对违规成员进行教育或处罚。<br>19.3 <strong>营造氛围</strong>：主动发起有益话题，引导积极讨论，欢迎新成员，提升群活力。<br>19.4 <strong>发布信息</strong>：准确、及时地发布官方通知和重要信息。<br>19.5 <strong>答疑解惑</strong>：耐心解答成员关于群规、群功能的疑问。<br>19.6 <strong>组织活动</strong>：可在班主任指导下，组织线上学习交流或文化活动。</p>
+<p><strong>第二十条 管理工作的原则</strong><br>20.1 <strong>公正公平原则</strong>：对待所有成员一视同仁，不偏袒、不歧视。处理违规应有明确依据。<br>20.2 <strong>程序正当原则</strong>：采取管理措施（尤其是警告、移除）前，应进行必要的调查和告知（紧急情况除外）。<br>20.3 <strong>教育与惩戒相结合原则</strong>：管理目的重在教育引导，帮助成员认识到错误并改正，而非简单惩罚。<br>20.4 <strong>透明与保密相结合原则</strong>：管理规则和重大处理结果可适度公开，但涉及个人隐私的调查过程应保密。<br>20.5 <strong>团队协作原则</strong>：管理员之间应保持沟通，对复杂问题集体商议，避免个人专断。</p>
+<p><strong>第二十一条 管理操作流程</strong><br>21.1 <strong>内容处理</strong>：发现违规内容，立即删除，并视情况对发布者进行私信警告或公开提醒（注意保护其尊严）。<br>21.2 <strong>成员警告</strong>：对于轻微违规者，首次通常进行私信提醒和教育；再次违规可进行群内点名警告（仅显示昵称）。<br>21.3 <strong>移除成员</strong>：对于发布第十条所列严禁内容或多次警告无效、严重破坏群秩序的成员，经管理员团队合议后，可执行移除操作。移除前应尽可能告知其理由（重大违法内容除外）。<br>21.4 <strong>申诉机制</strong>：被处置成员如认为处置不公，有权在被处置后3日内向班主任或其他管理员提起申诉。管理员团队需受理并进行复核答复。</p>
+<p><strong>第六章 隐私保护与数据安全</strong></p>
+<p><strong>第二十二条 个人信息保护</strong><br>22.1 严格保护群内成员的各类个人信息，包括但不限于姓名、学号、联系方式、照片、家庭情况、成绩等。<br>22.2 未经本人明确同意，禁止收集、使用、公开任何其他成员的个人信息。<br>22.3 群内聊天记录视为集体隐私，未经当事人同意，禁止截屏、录屏后传播到群外或其他公开平台，即使用于“吐槽”或“取证”也应极度谨慎并做打码处理。</p>
+<p><strong>第二十三条 群内信息使用</strong><br>23.1 禁止将群内讨论内容、分享的学习资料用于任何商业目的。<br>23.2 未经原创者同意，禁止将群内的原创内容（如解题思路、心得体会、文章）公开发表或用于其他用途。</p>
+<p><strong>第二十四条 防诈骗与安全意识</strong><br>24.1 警惕任何形式的网络诈骗。凡涉及金钱往来（如缴费、捐款、买卖）、索要密码、验证码的要求，必须通过电话或当面与当事人或老师核实确认。<br>24.2 不要轻易点击来源不明的链接、扫描可疑二维码、下载未经验证的文件。<br>24.3 发现可疑情况，应立即向管理员报告。</p>
+<p><strong>第七章 附则</strong></p>
+<p><strong>第二十五条 公约的生效、修改与解释</strong><br>25.1 本公约经班级民主讨论（或班委会审议）、班主任批准后生效，并向全体成员公布。<br>25.2 本公约的修改，需由管理员团队或十分之一以上成员联名提出议案，经群内公开讨论后，由管理员团队修订，报班主任批准后公布实施。<br>25.3 本公约的最终解释权归班级管理员团队及班主任所有。</p>
+<p><strong>第二十六条 其他</strong><br>26.1 本公约未尽事宜，参照有关法律法规和学校规章制度执行。<br>26.2 本公约自发布之日起施行。</p>
+<p><strong>结语：我们的承诺</strong></p>
+<p>亲爱的同学们，一份公约，千字承诺。它不仅是约束，更是我们对自己、对集体的一份郑重约定。建设一个美好的网络家园，需要我们每个人的智慧、热情和自律。让我们从自身做起，从每一条信息、每一次互动做起，共同努力，将2024届初一5班同学群打造成为一个充满智慧、洋溢温情、助力成长的优秀网络集体！</p>
+<p>愿这里，能成为我们初中岁月里，一抹亮丽的数字记忆。<br><br><br><strong>2025年8月31日</strong><br><strong>班级同学群成员</strong>，<br>敬上<br><br></p>
+<hr>
+<center>本网页托管于<a href="https://li2012China.github.io">Github Pages</a>。©By li2012China，保留所有权利。
+  </div>
+</body>
+</html>
