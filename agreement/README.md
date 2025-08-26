@@ -1,0 +1,1 @@
+This folder is only used to store protocol document files, most of which appear with the ".html" suffix and a few in the form of ".md". These files mainly rely on Github Pages to work, if you want, check them out [there](https://li2012China.github.io/).
