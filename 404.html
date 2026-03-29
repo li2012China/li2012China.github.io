@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - 页面未找到</title>
+    <link rel="icon" type="image/png" href="images/profile.png" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        text-align: center;
+      }
+      .error-code {
+        font-size: 8rem;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
+      }
+      .error-message {
+        font-size: 1.5rem;
+        margin: 1rem 0;
+        color: #666;
+      }
+      .home-link {
+        margin-top: 2rem;
+        padding: 0.8rem 2rem;
+        background-color: #333;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      .home-link:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 顶栏 -->
+    <nav class="top-bar">
+      <div class="top-bar-content">
+        <a href="index.html" class="top-bar-logo">
+          <img src="images/profile.png" alt="马太Matthew" />
+          <span>马太Matthew</span>
+        </a>
+        <div class="top-bar-nav">
+          <a href="index.html">主页</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <p class="error-message">页面未找到</p>
+        <p>您访问的页面不存在或已被删除</p>
+        <a href="index.html" class="home-link">返回主页</a>
+      </div>
+
+      <!-- 页脚 -->
+      <footer class="footer">
+        <p>© <span id="year"></span> 马太Matthew</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
