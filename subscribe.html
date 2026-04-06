@@ -193,7 +193,8 @@
         if (step <= moveSteps) {
           // 1. 从右侧移动到中间（按钮位置）
           const progress = step / moveSteps;
-          targetX = window.innerWidth + 50 - (window.innerWidth + 100) * progress;
+          // 从屏幕右侧外进入，移动到按钮中心
+          targetX = window.innerWidth + 50 - (window.innerWidth + 100 - btnCenterX) * progress;
           targetY = btnCenterY - 10;
         } else if (step > moveSteps && step <= moveSteps + pauseSteps) {
           // 2. 停下，停留在按钮上
@@ -209,7 +210,8 @@
         } else if (step > moveSteps + pauseSteps + 1 + clickPauseSteps && step <= moveSteps * 2 + pauseSteps + 1 + clickPauseSteps) {
           // 5. 移动到左侧
           const progress = (step - (moveSteps + pauseSteps + 1 + clickPauseSteps)) / moveSteps;
-          targetX = -50 - (-window.innerWidth - 100) * progress;
+          // 从按钮中心移动到屏幕左侧外
+          targetX = btnCenterX - (btnCenterX + 100) * progress;
           targetY = btnCenterY - 10;
         } else {
           // 动画结束
