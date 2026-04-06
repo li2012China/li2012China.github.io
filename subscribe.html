@@ -183,9 +183,8 @@
       
       // 动画参数
       let step = 0;
-      const moveSteps = 80;       // 减少移动步骤数，加快速度
-      const pauseSteps = 30;      // 减少停顿步骤数
-      const clickPauseSteps = 15; // 减少点击后停顿步骤数
+      const moveSteps = 80;       // 移动步骤数
+      const clickPauseSteps = 15; // 点击后停顿步骤数
       
       const animationInterval = setInterval(() => {
         step++;
@@ -196,20 +195,16 @@
           // 从屏幕右侧外进入，移动到按钮中心
           targetX = window.innerWidth + 50 - (window.innerWidth + 100 - btnCenterX) * progress;
           targetY = btnCenterY - 10;
-        } else if (step > moveSteps && step <= moveSteps + pauseSteps) {
-          // 2. 停下，停留在按钮上
-          targetX = btnCenterX - 10;
-          targetY = btnCenterY - 10;
-        } else if (step === moveSteps + pauseSteps + 1) {
-          // 3. 按按钮
+        } else if (step === moveSteps + 1) {
+          // 2. 按按钮（移除按下按钮前的停顿）
           subscribeBtn.click();
-        } else if (step > moveSteps + pauseSteps + 1 && step <= moveSteps + pauseSteps + 1 + clickPauseSteps) {
-          // 4. 停顿，显示按钮状态变化
+        } else if (step > moveSteps + 1 && step <= moveSteps + 1 + clickPauseSteps) {
+          // 3. 停顿，显示按钮状态变化
           targetX = btnCenterX - 10;
           targetY = btnCenterY - 10;
-        } else if (step > moveSteps + pauseSteps + 1 + clickPauseSteps && step <= moveSteps * 2 + pauseSteps + 1 + clickPauseSteps) {
-          // 5. 移动到左侧
-          const progress = (step - (moveSteps + pauseSteps + 1 + clickPauseSteps)) / moveSteps;
+        } else if (step > moveSteps + 1 + clickPauseSteps && step <= moveSteps * 2 + 1 + clickPauseSteps) {
+          // 4. 移动到左侧
+          const progress = (step - (moveSteps + 1 + clickPauseSteps)) / moveSteps;
           // 从按钮中心移动到屏幕左侧外
           targetX = btnCenterX - (btnCenterX + 100) * progress;
           targetY = btnCenterY - 10;
@@ -217,7 +212,7 @@
           // 动画结束
           clearInterval(animationInterval);
         }
-      }, 20); // 减少时间间隔，加快速度
+      }, 20); // 时间间隔
     }
 
     // 订阅按钮功能
