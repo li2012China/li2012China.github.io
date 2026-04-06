@@ -213,7 +213,12 @@
           // 确保光标准确在按钮中心
           targetX = btnCenterX - 10;
           targetY = btnCenterY - 10;
-          subscribeBtn.click();
+          // 光标缩小再放大动画
+          cursor.style.transform = 'scale(0.5)';
+          setTimeout(() => {
+            cursor.style.transform = 'scale(1)';
+            subscribeBtn.click();
+          }, 150);
         } else if (step > moveSteps + 1 && step <= moveSteps + 1 + clickPauseSteps) {
           // 3. 停顿，显示按钮状态变化
           targetX = btnCenterX - 10;
