@@ -183,9 +183,9 @@
       
       // 动画参数
       let step = 0;
-      const moveSteps = 150;      // 移动步骤数
-      const pauseSteps = 60;      // 停顿步骤数
-      const clickPauseSteps = 30; // 点击后停顿步骤数
+      const moveSteps = 80;       // 减少移动步骤数，加快速度
+      const pauseSteps = 30;      // 减少停顿步骤数
+      const clickPauseSteps = 15; // 减少点击后停顿步骤数
       
       const animationInterval = setInterval(() => {
         step++;
@@ -217,7 +217,7 @@
           // 动画结束
           clearInterval(animationInterval);
         }
-      }, 30);
+      }, 20); // 减少时间间隔，加快速度
     }
 
     // 订阅按钮功能
