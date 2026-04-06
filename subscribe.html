@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>关注 - 马太Matthew</title>
+    <link rel="icon" type="image/png" href="images/profile.png" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .subscribe-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        padding: 2rem;
+      }
+      .profile-card {
+        background-color: #1a1a1a;
+        border-radius: 0;
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .profile-header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+      .profile-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 0;
+        margin-right: 1rem;
+      }
+      .profile-info {
+        flex: 1;
+      }
+      .profile-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0 0 0.25rem 0;
+      }
+      .profile-status {
+        font-size: 0.9rem;
+        color: #aaa;
+        margin: 0;
+      }
+      .message-btn {
+        background-color: transparent;
+        border: 1px solid #666;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background-color 0.3s;
+      }
+      .message-btn:hover {
+        background-color: #333;
+      }
+      .subscribe-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 0;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1rem;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .subscribe-btn:hover {
+        background-color: #0069d9;
+      }
+      .subscribe-btn.subscribed {
+        background-color: #6c757d;
+        cursor: default;
+      }
+      .custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease-out;
+        mix-blend-mode: difference;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 顶栏 -->
+    <nav class="top-bar">
+      <div class="top-bar-content">
+        <a href="index.html" class="top-bar-logo">
+          <img src="images/profile.png" alt="马太Matthew" />
+          <span>马太Matthew</span>
+        </a>
+        <div class="top-bar-nav">
+          <a href="index.html">主页</a>
+          <a href="subscribe.html" class="active">关注</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="subscribe-container">
+        <div class="profile-card">
+          <div class="profile-header">
+            <img src="images/profile.png" alt="马太Matthew" class="profile-avatar" />
+            <div class="profile-info">
+              <h2 class="profile-name">马太Matthew</h2>
+              <p class="profile-status">随缘更新，但不停更。</p>
+            </div>
+            <button class="message-btn">发消息</button>
+          </div>
+          <button class="subscribe-btn" id="subscribeBtn">+ 关注 21</button>
+        </div>
+      </div>
+
+      <!-- 页脚 -->
+      <footer class="footer">
+        <p>© <span id="year"></span> 马太Matthew</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // 自定义光标
+      const cursor = document.createElement('div');
+      cursor.classList.add('custom-cursor');
+      document.body.appendChild(cursor);
+
+      let cursorX = 0;
+      let cursorY = 0;
+      let targetX = 0;
+      let targetY = 0;
+
+      function updateCursor() {
+        cursorX += (targetX - cursorX) * 0.1;
+        cursorY += (targetY - cursorY) * 0.1;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(updateCursor);
+      }
+
+      document.addEventListener('mousemove', (e) => {
+        targetX = e.clientX - 10;
+        targetY = e.clientY - 10;
+      });
+
+      updateCursor();
+
+      // 订阅按钮功能
+      const subscribeBtn = document.getElementById('subscribeBtn');
+      let isSubscribed = false;
+
+      subscribeBtn.addEventListener('mouseenter', () => {
+        // 光标移动到按钮时的效果
+        cursor.style.transform = 'scale(1.2)';
+      });
+
+      subscribeBtn.addEventListener('mouseleave', () => {
+        // 光标离开按钮时的效果
+        cursor.style.transform = 'scale(1)';
+      });
+
+      subscribeBtn.addEventListener('mousedown', () => {
+        // 按下按钮时光标缩小再放大
+        cursor.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+          cursor.style.transform = 'scale(1.2)';
+        }, 150);
+      });
+
+      subscribeBtn.addEventListener('click', () => {
+        isSubscribed = !isSubscribed;
+        if (isSubscribed) {
+          subscribeBtn.classList.add('subscribed');
+          subscribeBtn.textContent = '已关注 22';
+        } else {
+          subscribeBtn.classList.remove('subscribed');
+          subscribeBtn.textContent = '+ 关注 21';
+        }
+      });
+    </script>
+  </body>
+</html>
