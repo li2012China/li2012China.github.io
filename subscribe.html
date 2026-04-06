@@ -167,6 +167,8 @@
       // 自动光标动画
       function autoCursorAnimation() {
         const subscribeBtn = document.getElementById('subscribeBtn');
+        if (!subscribeBtn) return;
+        
         const btnRect = subscribeBtn.getBoundingClientRect();
         const btnCenterX = btnRect.left + btnRect.width / 2;
         const btnCenterY = btnRect.top + btnRect.height / 2;
@@ -174,7 +176,7 @@
         // 1. 从屏幕右侧移动到按钮
         let step = 0;
         const totalSteps = 200; // 增加步数使动画更慢
-        const clickDelay = 100; // 增加点击前的延迟
+        const clickDelay = 50; // 调整点击延迟
         
         const animationInterval = setInterval(() => {
           step++;
@@ -184,12 +186,17 @@
             const progress = step / totalSteps;
             targetX = window.innerWidth + 50 - (window.innerWidth + 100) * progress;
             targetY = btnCenterY - 10;
-          } else if (step === totalSteps + clickDelay) {
-            // 2. 点击按钮
+          } else if (step > totalSteps && step <= totalSteps + clickDelay) {
+            // 2. 停留在按钮上
+            targetX = btnCenterX - 10;
+            targetY = btnCenterY - 10;
+          } else if (step === totalSteps + clickDelay + 1) {
+            // 3. 点击按钮
+            console.log('点击按钮');
             subscribeBtn.click();
-          } else if (step > totalSteps + clickDelay && step <= totalSteps * 2 + clickDelay) {
-            // 3. 从左侧移出
-            const progress = (step - totalSteps - clickDelay) / totalSteps;
+          } else if (step > totalSteps + clickDelay + 1 && step <= totalSteps * 2 + clickDelay + 1) {
+            // 4. 从左侧移出
+            const progress = (step - totalSteps - clickDelay - 1) / totalSteps;
             targetX = -50 - (-window.innerWidth - 100) * progress;
             targetY = btnCenterY - 10;
           } else {
