@@ -148,7 +148,6 @@
       let cursorY = 0;
       let targetX = 0;
       let targetY = 0;
-      let isMoving = true;
 
       function updateCursor() {
         cursorX += (targetX - cursorX) * 0.1;
@@ -158,34 +157,49 @@
         requestAnimationFrame(updateCursor);
       }
 
-      function moveCursor() {
-        if (isMoving) {
-          // 随机生成目标位置
-          targetX = Math.random() * window.innerWidth - 10;
-          targetY = Math.random() * window.innerHeight - 10;
-          
-          // 随机生成下一次移动的时间间隔
-          const nextMoveTime = Math.random() * 3000 + 1000; // 1-4秒
-          setTimeout(moveCursor, nextMoveTime);
-        }
-      }
-
-      // 开始自动移动
-      moveCursor();
-      updateCursor();
-
-      // 当鼠标移动时，暂时停止自动移动
       document.addEventListener('mousemove', (e) => {
-        isMoving = false;
         targetX = e.clientX - 10;
         targetY = e.clientY - 10;
+      });
+
+      updateCursor();
+
+      // 自动光标动画
+      function autoCursorAnimation() {
+        const subscribeBtn = document.getElementById('subscribeBtn');
+        const btnRect = subscribeBtn.getBoundingClientRect();
+        const btnCenterX = btnRect.left + btnRect.width / 2;
+        const btnCenterY = btnRect.top + btnRect.height / 2;
         
-        // 5秒后恢复自动移动
-        clearTimeout(window.cursorTimeout);
-        window.cursorTimeout = setTimeout(() => {
-          isMoving = true;
-          moveCursor();
-        }, 5000);
+        // 1. 从屏幕右侧移动到按钮
+        let step = 0;
+        const totalSteps = 100;
+        
+        const animationInterval = setInterval(() => {
+          step++;
+          
+          if (step <= totalSteps) {
+            // 从右侧进入，移动到按钮
+            const progress = step / totalSteps;
+            targetX = window.innerWidth + 50 - (window.innerWidth + 100) * progress;
+            targetY = btnCenterY - 10;
+          } else if (step === totalSteps + 50) {
+            // 2. 点击按钮
+            subscribeBtn.click();
+          } else if (step > totalSteps + 50 && step <= totalSteps * 2 + 50) {
+            // 3. 从左侧移出
+            const progress = (step - totalSteps - 50) / totalSteps;
+            targetX = -50 - (-window.innerWidth - 100) * progress;
+            targetY = btnCenterY - 10;
+          } else {
+            clearInterval(animationInterval);
+          }
+        }, 20);
+      }
+
+      // 页面加载完成后执行动画
+      window.addEventListener('load', () => {
+        setTimeout(autoCursorAnimation, 1000); // 延迟1秒开始动画
       });
 
       // 订阅按钮功能
