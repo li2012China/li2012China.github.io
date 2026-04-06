@@ -192,7 +192,11 @@
         
         // 缓动函数 - 实现非线性移动效果
         function easeOutQuad(t) {
-          return t * (2 - t);
+          return t * (2 - t); // 从快到慢
+        }
+        
+        function easeInQuad(t) {
+          return t * t; // 从慢到快
         }
         
         if (step <= moveSteps) {
@@ -217,7 +221,7 @@
         } else if (step > moveSteps + 1 + clickPauseSteps && step <= moveSteps * 2 + 1 + clickPauseSteps) {
           // 4. 移动到左侧
           const linearProgress = (step - (moveSteps + 1 + clickPauseSteps)) / moveSteps;
-          const easeProgress = easeOutQuad(linearProgress);
+          const easeProgress = easeInQuad(linearProgress); // 使用easeInQuad实现从慢到快
           // 从按钮中心移动到屏幕左侧外
           const startX = btnCenterX - 10;
           const endX = -50;
