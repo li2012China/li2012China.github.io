@@ -173,7 +173,8 @@
         
         // 1. 从屏幕右侧移动到按钮
         let step = 0;
-        const totalSteps = 100;
+        const totalSteps = 200; // 增加步数使动画更慢
+        const clickDelay = 100; // 增加点击前的延迟
         
         const animationInterval = setInterval(() => {
           step++;
@@ -183,23 +184,23 @@
             const progress = step / totalSteps;
             targetX = window.innerWidth + 50 - (window.innerWidth + 100) * progress;
             targetY = btnCenterY - 10;
-          } else if (step === totalSteps + 50) {
+          } else if (step === totalSteps + clickDelay) {
             // 2. 点击按钮
             subscribeBtn.click();
-          } else if (step > totalSteps + 50 && step <= totalSteps * 2 + 50) {
+          } else if (step > totalSteps + clickDelay && step <= totalSteps * 2 + clickDelay) {
             // 3. 从左侧移出
-            const progress = (step - totalSteps - 50) / totalSteps;
+            const progress = (step - totalSteps - clickDelay) / totalSteps;
             targetX = -50 - (-window.innerWidth - 100) * progress;
             targetY = btnCenterY - 10;
           } else {
             clearInterval(animationInterval);
           }
-        }, 20);
+        }, 30); // 增加时间间隔使动画更慢
       }
 
       // 页面加载完成后执行动画
       window.addEventListener('load', () => {
-        setTimeout(autoCursorAnimation, 1000); // 延迟1秒开始动画
+        setTimeout(autoCursorAnimation, 2000); // 延迟2秒开始动画，给页面更多加载时间
       });
 
       // 订阅按钮功能
