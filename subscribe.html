@@ -148,6 +148,7 @@
       let cursorY = 0;
       let targetX = 0;
       let targetY = 0;
+      let isMoving = true;
 
       function updateCursor() {
         cursorX += (targetX - cursorX) * 0.1;
@@ -157,12 +158,35 @@
         requestAnimationFrame(updateCursor);
       }
 
+      function moveCursor() {
+        if (isMoving) {
+          // 随机生成目标位置
+          targetX = Math.random() * window.innerWidth - 10;
+          targetY = Math.random() * window.innerHeight - 10;
+          
+          // 随机生成下一次移动的时间间隔
+          const nextMoveTime = Math.random() * 3000 + 1000; // 1-4秒
+          setTimeout(moveCursor, nextMoveTime);
+        }
+      }
+
+      // 开始自动移动
+      moveCursor();
+      updateCursor();
+
+      // 当鼠标移动时，暂时停止自动移动
       document.addEventListener('mousemove', (e) => {
+        isMoving = false;
         targetX = e.clientX - 10;
         targetY = e.clientY - 10;
+        
+        // 5秒后恢复自动移动
+        clearTimeout(window.cursorTimeout);
+        window.cursorTimeout = setTimeout(() => {
+          isMoving = true;
+          moveCursor();
+        }, 5000);
       });
-
-      updateCursor();
 
       // 订阅按钮功能
       const subscribeBtn = document.getElementById('subscribeBtn');
