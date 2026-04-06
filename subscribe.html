@@ -199,10 +199,15 @@
           const linearProgress = step / moveSteps;
           const easeProgress = easeOutQuad(linearProgress);
           // 从屏幕右侧外进入，移动到按钮中心
-          targetX = window.innerWidth + 50 - (window.innerWidth + 100 - btnCenterX) * easeProgress;
+          const startX = window.innerWidth + 50;
+          const endX = btnCenterX - 10;
+          targetX = startX + (endX - startX) * easeProgress;
           targetY = btnCenterY - 10;
         } else if (step === moveSteps + 1) {
           // 2. 按按钮（移除按下按钮前的停顿）
+          // 确保光标准确在按钮中心
+          targetX = btnCenterX - 10;
+          targetY = btnCenterY - 10;
           subscribeBtn.click();
         } else if (step > moveSteps + 1 && step <= moveSteps + 1 + clickPauseSteps) {
           // 3. 停顿，显示按钮状态变化
@@ -213,7 +218,9 @@
           const linearProgress = (step - (moveSteps + 1 + clickPauseSteps)) / moveSteps;
           const easeProgress = easeOutQuad(linearProgress);
           // 从按钮中心移动到屏幕左侧外
-          targetX = btnCenterX - (btnCenterX + 100) * easeProgress;
+          const startX = btnCenterX - 10;
+          const endX = -50;
+          targetX = startX + (endX - startX) * easeProgress;
           targetY = btnCenterY - 10;
         } else {
           // 动画结束
