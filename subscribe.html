@@ -189,11 +189,17 @@
       const animationInterval = setInterval(() => {
         step++;
         
+        // 缓动函数 - 实现非线性移动效果
+        function easeOutQuad(t) {
+          return t * (2 - t);
+        }
+        
         if (step <= moveSteps) {
           // 1. 从右侧移动到中间（按钮位置）
-          const progress = step / moveSteps;
+          const linearProgress = step / moveSteps;
+          const easeProgress = easeOutQuad(linearProgress);
           // 从屏幕右侧外进入，移动到按钮中心
-          targetX = window.innerWidth + 50 - (window.innerWidth + 100 - btnCenterX) * progress;
+          targetX = window.innerWidth + 50 - (window.innerWidth + 100 - btnCenterX) * easeProgress;
           targetY = btnCenterY - 10;
         } else if (step === moveSteps + 1) {
           // 2. 按按钮（移除按下按钮前的停顿）
@@ -204,9 +210,10 @@
           targetY = btnCenterY - 10;
         } else if (step > moveSteps + 1 + clickPauseSteps && step <= moveSteps * 2 + 1 + clickPauseSteps) {
           // 4. 移动到左侧
-          const progress = (step - (moveSteps + 1 + clickPauseSteps)) / moveSteps;
+          const linearProgress = (step - (moveSteps + 1 + clickPauseSteps)) / moveSteps;
+          const easeProgress = easeOutQuad(linearProgress);
           // 从按钮中心移动到屏幕左侧外
-          targetX = btnCenterX - (btnCenterX + 100) * progress;
+          targetX = btnCenterX - (btnCenterX + 100) * easeProgress;
           targetY = btnCenterY - 10;
         } else {
           // 动画结束
