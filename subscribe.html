@@ -157,10 +157,11 @@
         requestAnimationFrame(updateCursor);
       }
 
-      document.addEventListener('mousemove', (e) => {
-        targetX = e.clientX - 10;
-        targetY = e.clientY - 10;
-      });
+      // 移除鼠标跟踪，只执行自动动画
+      // document.addEventListener('mousemove', (e) => {
+      //   targetX = e.clientX - 10;
+      //   targetY = e.clientY - 10;
+      // });
 
       updateCursor();
 
