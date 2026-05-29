@@ -4,6 +4,7 @@
   "version": "2.0.0",
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
     "docs:build": "vuepress-webpack build src",
     "docs:clean-dev": "vuepress-webpack dev src --clean-cache",
